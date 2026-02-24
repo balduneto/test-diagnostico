@@ -1,0 +1,112 @@
+
+---
+
+## FILE: assets/styles.css
+
+```css
+/* ===== Reset + base ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f8fafc;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.overflow-x-auto { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ===== Loader ===== */
+.app-loader {
+  position: fixed;
+  inset: 0;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  color: #1e3a8a;
+}
+
+/* ===== Modal ===== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal {
+  width: min(980px, 98vw);
+  max-height: 92vh;
+  overflow: auto;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.2);
+}
+
+/* ===== PDF blindagem ===== */
+.pdf-generating {
+  width: 1200px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  background: white !important;
+  padding: 40px !important;
+}
+.pdf-generating.consolidated {
+  width: 1400px !important;
+  max-width: 1400px !important;
+}
+.pdf-generating .recharts-tooltip-wrapper { display: none !important; }
+
+/* ===== Print ===== */
+@media print {
+  @page { margin: 10mm; size: portrait; }
+  html, body { background: white !important; font-size: 10pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  .print-card {
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: none !important;
+    margin-bottom: 18px !important;
+    padding: 14px !important;
+    background: white !important;
+    border-radius: 10px;
+    width: 100% !important;
+  }
+}
+.print-only { display: none; }
+
+/* ===== Slider termômetro ===== */
+input[type=range].thermometer-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(to right,
+    #3b82f6 0%, #3b82f6 40%,
+    #eab308 50%, #eab308 70%,
+    #ef4444 80%, #ef4444 100%);
+  outline: none;
+}
+input[type=range].thermometer-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid #475569;
+  cursor: pointer;
+  margin-top: -6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
