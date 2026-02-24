@@ -1,112 +1,42 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <title>Diagnóstico 360º SENAI - STI</title>
 
----
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-## FILE: assets/styles.css
+  <!-- CSV / XLSX -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.19.3/dist/xlsx.full.min.js"></script>
 
-```css
-/* ===== Reset + base ===== */
-*, *::before, *::after { box-sizing: border-box; }
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background: #f8fafc;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  -webkit-font-smoothing: antialiased;
-}
-a { color: inherit; }
+  <!-- Chart.js (Radar) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
-.scrollbar-hide::-webkit-scrollbar { display: none; }
-.overflow-x-auto { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  <!-- PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-/* ===== Loader ===== */
-.app-loader {
-  position: fixed;
-  inset: 0;
-  background: #f8fafc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 9999;
-  color: #1e3a8a;
-}
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-/* ===== Modal ===== */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.55);
-  z-index: 9998;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-}
-.modal {
-  width: min(980px, 98vw);
-  max-height: 92vh;
-  overflow: auto;
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.2);
-}
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
 
-/* ===== PDF blindagem ===== */
-.pdf-generating {
-  width: 1200px !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  background: white !important;
-  padding: 40px !important;
-}
-.pdf-generating.consolidated {
-  width: 1400px !important;
-  max-width: 1400px !important;
-}
-.pdf-generating .recharts-tooltip-wrapper { display: none !important; }
+<body>
+  <div id="boot-loader" class="app-loader">
+    <div class="flex items-center gap-2">
+      <div class="w-3 h-3 rounded-full bg-blue-700 animate-pulse"></div>
+      <div class="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div>
+      <div class="w-3 h-3 rounded-full bg-blue-300 animate-pulse"></div>
+    </div>
+    <div class="text-sm font-bold">Iniciando Diagnóstico 360º SENAI...</div>
+    <div class="text-xs opacity-70">Carregando módulos</div>
+  </div>
 
-/* ===== Print ===== */
-@media print {
-  @page { margin: 10mm; size: portrait; }
-  html, body { background: white !important; font-size: 10pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .no-print { display: none !important; }
-  .print-only { display: block !important; }
-  .print-card {
-    border: 1px solid #e2e8f0 !important;
-    box-shadow: none !important;
-    margin-bottom: 18px !important;
-    padding: 14px !important;
-    background: white !important;
-    border-radius: 10px;
-    width: 100% !important;
-  }
-}
-.print-only { display: none; }
+  <div id="root" class="min-h-screen"></div>
 
-/* ===== Slider termômetro ===== */
-input[type=range].thermometer-slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 12px;
-  border-radius: 6px;
-  background: linear-gradient(to right,
-    #3b82f6 0%, #3b82f6 40%,
-    #eab308 50%, #eab308 70%,
-    #ef4444 80%, #ef4444 100%);
-  outline: none;
-}
-input[type=range].thermometer-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 999px;
-  background: #ffffff;
-  border: 2px solid #475569;
-  cursor: pointer;
-  margin-top: -6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
